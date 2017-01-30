@@ -44,7 +44,7 @@ class CommandRegistry
         }
 
         // Check if command already exists
-        if (empty($this->get($command->getCommandType()))) {
+        if (empty($this->get($commandType))) {
             throw new LogicException('There is already a registered command with the same type.');
         }
 
