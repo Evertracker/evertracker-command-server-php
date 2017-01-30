@@ -39,6 +39,24 @@ abstract class AbstractCommand implements CommandInterface
     abstract public function getCommandType();
 
     /**
+     * Initialize the command before executing.
+     *
+     * @return bool
+     *
+     * @throws Exception
+     */
+    abstract public function initialize();
+
+    /**
+     * Includes the actual command implementation.
+     *
+     * @return bool
+     *
+     * @throws Exception
+     */
+    abstract public function executeImplementation();
+
+    /**
      * AbstractCommand constructor.
      *
      * @param CommandRegistry $registry
@@ -65,9 +83,17 @@ abstract class AbstractCommand implements CommandInterface
      *
      * @throws Exception
      */
-    public function execute()
+    final public function execute()
     {
-        // TODO: Implement execute() method.
+        try {
+            if ($this->initialize()) {
+                $this->executeImplementation();
+            }
+        } catch (Exception $ex) {
+            // todo: catch exception block
+        } finally {
+            // todo: finally block
+        }
 
         return true;
     }
