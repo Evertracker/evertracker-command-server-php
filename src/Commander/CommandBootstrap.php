@@ -35,7 +35,7 @@ class CommandBootstrap
     }
 
     /**
-     * Locate all commands and return an array of fully qualified names
+     * Locate all dispatchers and register them to the registry
      */
     public function bootstrap()
     {
